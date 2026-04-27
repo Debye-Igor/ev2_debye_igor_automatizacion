@@ -36,7 +36,7 @@ Restricciones técnicas:
 
 ### QA — Mathias Igor
 
-> "Quiero asegurarme de cubrir el caso de login exitoso, las credenciales incorrectas, y por lo menos un caso de borde como password vacío. También me preocupa que el endpoint pueda responder distinto si el usuario existe pero la password es erroneo vs si el usuario no existe — eso podría filtrar información."
+> "Quiero asegurarme de cubrir el caso de login exitoso, las credenciales incorrectas, y por lo menos un caso de borde como password vacío. También me preocupa que el endpoint pueda responder distinto si el usuario existe pero la password es incorrecta vs si el usuario no existe — eso podría filtrar información."
 
 Casos de prueba a cubrir:
 - Login exitoso con credenciales válidas.
