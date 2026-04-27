@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-and-test:
-    name: Build y ejecucion de pruebas
+    name: Build, pruebas unitarias y BDD
     runs-on: ubuntu-latest
 
     steps:
@@ -40,4 +40,14 @@ jobs:
         with:
           name: surefire-reports
           path: target/surefire-reports/
+          retention-days: 30
+
+
+      # 6. Publica el reporte HTML de Cucumber como artifact navegable
+      - name: Publicar reporte HTML de Cucumber
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-html-report
+          path: target/cucumber-report.html
           retention-days: 30
