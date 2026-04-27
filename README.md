@@ -44,7 +44,7 @@ La estructura sigue la convención estándar de Maven: el código de producción
 
 ### Requisitos
 
-- Java 17 o superior (probado con Temurin 17.0.16)
+- Java 17 o superior 
 - Maven 3.6 o superior
 - Git
 
