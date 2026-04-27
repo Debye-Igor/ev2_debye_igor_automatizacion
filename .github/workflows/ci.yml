@@ -1,0 +1,43 @@
+name: CI
+
+# Cuando se dispara este pipeline (tigger-9)
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Build y ejecucion de pruebas
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Trae el codigo del repo al runner
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      # 2. Instala Java 17 
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      # 3. Compila el proyecto sin correr tests todavia
+      - name: Compilar con Maven
+        run: mvn -B compile
+
+      # 4. Ejecuta los tests unitarios
+      - name: Ejecutar pruebas unitarias
+        run: mvn -B test
+
+      # 5. Publica el reporte de tests como artifact navegable
+      - name: Publicar reporte de Surefire
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/surefire-reports/
+          retention-days: 30
