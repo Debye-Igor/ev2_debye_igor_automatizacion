@@ -34,4 +34,28 @@ class CalculadoraTest {
         Calculadora calc = new Calculadora();
         assertEquals(-8, calc.sumar(-3, -5));
     }
+
+
+    @Test
+    @DisplayName("Restar dos numeros positivos devuelve la diferencia")
+    void restarDosNumerosPositivos() {
+        Calculadora calc = new Calculadora();
+        int resultado = calc.restar(10, 4);
+        assertEquals(6, resultado);
+    }
+
+    @Test
+    @DisplayName("Restar un numero a si mismo devuelve cero")
+    void restarMismoNumeroDaCero() {
+        Calculadora calc = new Calculadora();
+        assertEquals(0, calc.restar(5, 5));
+    }
+
+    @Test
+    @DisplayName("Restar un numero mayor a uno menor devuelve negativo")
+    void restarDaResultadoNegativo() {
+        Calculadora calc = new Calculadora();
+        assertEquals(-3, calc.restar(2, 5));
+    }
 }
+
